@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_ViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        />
+
+    <View
+        android:id="@+id/div_tab_bar"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"
+        />
+
+    <RadioGroup
+        android:id="@+id/main_tab_RadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/tab_menu_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_joke"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/tab_menu_bg"
+            android:drawablePadding="3dp"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@drawable/tab_viewpage_menu_text"
+            android:textSize="16sp"
+            android:drawableTop="@drawable/tab_viewpage_menu_joke"
+            android:text="@string/tab_joke"
+            android:checked="true"
+            />
+
+        <RadioButton
+            android:id="@+id/radio_girls"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/tab_menu_bg"
+            android:drawablePadding="3dp"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@drawable/tab_viewpage_menu_text"
+            android:textSize="16sp"
+            android:drawableTop="@drawable/tab_viewpage_menu_girls"
+            android:text="@string/tab_girl"
+            />
+
+        <RadioButton
+            android:id="@+id/radio_news"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/tab_menu_bg"
+            android:drawablePadding="3dp"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@drawable/tab_viewpage_menu_text"
+            android:textSize="16sp"
+            android:drawableTop="@drawable/tab_viewpage_menu_news"
+            android:text="@string/tab_new"
+            />
+        <RadioButton
+            android:id="@+id/radio_about"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/tab_menu_bg"
+            android:drawablePadding="3dp"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@drawable/tab_viewpage_menu_text"
+            android:textSize="16sp"
+            android:drawableTop="@drawable/tab_viewpage_menu_videos"
+            android:text="@string/tab_about"
+            android:checked="false" />
+    </RadioGroup>
+
+</LinearLayout>
