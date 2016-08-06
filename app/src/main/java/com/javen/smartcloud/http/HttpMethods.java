@@ -81,36 +81,6 @@ public class HttpMethods {
      * @param subscriber 由调用者传过来的观察者对象
      * @param options 访问参数
      */
-    public void getJokes(Subscriber<JokeEntity> subscriber, Map<String, Object> options){
-//        jokeService.getJokesByRxJava(options)
-//                .subscribeOn(Schedulers.io())
-//                .unsubscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(subscriber);
-        Observable<JokeEntity> observable = jokeService.getJokesByRxJava(options);
-        toSubscribe(observable,subscriber);
-    }
-
-    /**
-     * 用于获取聚合笑话的数据
-     * @param subscriber 由调用者传过来的观察者对象
-     * @param options 访问参数
-     */
-    public void getJokesByHttpResult(Subscriber<HttpJokeResult<JokeEntity.Data>> subscriber, Map<String, Object> options){
-//        jokeService.getJokesByRxJavaHttpResult(options)
-//                .subscribeOn(Schedulers.io())
-//                .unsubscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(subscriber);
-        Observable<HttpJokeResult<JokeEntity.Data>> observable = jokeService.getJokesByRxJavaHttpResult(options);
-        toSubscribe(observable,subscriber);
-    }
-
-    /**
-     * 用于获取聚合笑话的数据
-     * @param subscriber 由调用者传过来的观察者对象
-     * @param options 访问参数
-     */
     public void getJokesByHttpResultMap(Subscriber<JokeEntity.Data> subscriber, Map<String, Object> options){
 //        jokeService.getJokesByRxJavaHttpResult(options)
 //                .map(new HttpResultFunc<JokeEntity.Data>())
@@ -118,7 +88,7 @@ public class HttpMethods {
 //                .unsubscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread())
 //                .subscribe(subscriber);
-        Observable<JokeEntity.Data> observable = jokeService.getJokesByRxJavaHttpResult(options)
+        Observable<JokeEntity.Data> observable = jokeService.getJokes(options)
                 .map(new HttpResultFunc<JokeEntity.Data>());
         toSubscribe(observable,subscriber);
 
