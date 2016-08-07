@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 
 import com.javen.smartcloud.R;
 import com.javen.smartcloud.entity.JokeEntity;
-import com.javen.smartcloud.http.HttpMethods;
+import com.javen.smartcloud.http.HttpJuheMethods;
 import com.javen.smartcloud.subscribers.ProgressSubscriber;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -35,7 +35,6 @@ public class FragmentOne extends BaseFragment implements SwipeRefreshLayout.OnRe
     private final static int FIRST_WHAT = 0x456;
     private final static int REFRESH_WHAT = 0x457;
     private final static int LOADMORE_WHAT = 0x458;
-    private final static int LOADINGNOM_WHAT = 0x459;
     @BindView(R.id.id_recyclerview)
     RecyclerView recyclerview;
     @BindView(R.id.id_swipe_refresh_widget)
@@ -162,7 +161,7 @@ public class FragmentOne extends BaseFragment implements SwipeRefreshLayout.OnRe
         options.put("pagesize", 20);
         options.put("time", time);
 
-        HttpMethods.getInstance().getJokesByHttpResultMap(new ProgressSubscriber<JokeEntity.Data>(mActivity) {
+        HttpJuheMethods.getInstance().getJokesByHttpResultMap(new ProgressSubscriber<JokeEntity.Data>(mActivity) {
             @Override
             public void onDoNext(JokeEntity.Data data) {
                 List<JokeEntity.Data.Subject> subjects = data.getData();
