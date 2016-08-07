@@ -21,19 +21,18 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Pro
     @Override
     public void onStart() {
         showProgressDialog();
-        Toast.makeText(context, "Get Jokes Started", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, "Get Jokes Started", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onCompleted() {
         dismissProgressDialog();
-        Toast.makeText(context, "Get Jokes Completed", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, "Get Jokes Completed", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onError(Throwable e) {
-        dismissProgressDialog();
-        Toast.makeText(context, "error:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+        onCustomError(e);
     }
 
     @Override
@@ -42,6 +41,11 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Pro
     }
 
     public abstract void onDoNext(T t);
+
+    protected void onCustomError(Throwable e){
+        dismissProgressDialog();
+        Toast.makeText(context, "error:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public void onCancelProgress() {

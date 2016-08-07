@@ -1,17 +1,18 @@
 package com.javen.smartcloud.progress;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class ProgressDialogHandler extends Handler {
 
     public static final int SHOW_PROGRESS_DIALOG = 1;
     public static final int DISMISS_PROGRESS_DIALOG = 2;
 
-    private ProgressDialog pd;
+    private SweetAlertDialog pd;
 
     private Context context;
     private boolean cancelable;
@@ -28,14 +29,15 @@ public class ProgressDialogHandler extends Handler {
 
     private void initProgressDialog(){
         if (pd == null) {
-            pd = new ProgressDialog(context);
-            pd.setTitle("数据处理中...");
+            pd = new SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE);
+            pd.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+            pd.setTitleText("Loading");
             pd.setCancelable(cancelable);
-
             if (cancelable) {
-                pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                pd.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
-                    public void onCancel(DialogInterface dialogInterface) {
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+
                         mProgressCancelListener.onCancelProgress();
                     }
                 });
