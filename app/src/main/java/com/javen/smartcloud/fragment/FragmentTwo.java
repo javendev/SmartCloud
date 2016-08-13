@@ -71,6 +71,10 @@ public class FragmentTwo extends BaseFragment implements SwipeRefreshLayout.OnRe
         if (girlList == null) {
             girlList = new ArrayList<GankEntity>();
         }
+    }
+
+    @Override
+    public void loadData() {
         getGank(1, FIRST_WHAT);
     }
 
@@ -103,6 +107,7 @@ public class FragmentTwo extends BaseFragment implements SwipeRefreshLayout.OnRe
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
                 Intent intent = new Intent(mContext, ImageActivity.class);
                 intent.putExtra("type",1);
+                intent.putExtra("position",position);
                 intent.putParcelableArrayListExtra("images",girlList);
                 startActivity(intent);
             }
@@ -167,7 +172,9 @@ public class FragmentTwo extends BaseFragment implements SwipeRefreshLayout.OnRe
             @Override
             protected void onCustomError(Throwable e) {
                 setRefredhingFalse();
-                showCommonError();
+                if(type == FIRST_WHAT){
+                    showCommonError();
+                }
                 super.onCustomError(e);
             }
         }, "福利", 20, page);

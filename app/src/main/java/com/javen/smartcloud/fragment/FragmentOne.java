@@ -74,6 +74,11 @@ public class FragmentOne extends BaseFragment implements SwipeRefreshLayout.OnRe
         if (random == null) {
             random = new Random();
         }
+
+    }
+
+    @Override
+    public void loadData() {
         getJokes(1, FIRST_WHAT);
     }
 

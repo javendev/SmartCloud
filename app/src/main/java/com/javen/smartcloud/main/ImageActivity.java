@@ -65,12 +65,15 @@ public class ImageActivity extends AppCompatActivity implements ViewPager.OnPage
                 String imageUrl = extras.getString("imageUrl");
                 Imageloader.getInstance(this).setImage(imageUrl,showImage,R.drawable.default_item_picture);
             }else if (type == 1){
+                int position=extras.getInt("position");
                 if(showImages == null){
                     showImages=new ArrayList<String>();
                 }
                 ArrayList<GankEntity> images = extras.getParcelableArrayList("images");
+                //截取数据 从点击的位置开始显示
+                List<GankEntity> gankEntities = images.subList(position, images.size());
 
-                for (GankEntity gankEntity:images) {
+                for (GankEntity gankEntity:gankEntities) {
                     showImages.add(gankEntity.getUrl());
                 }
                 initTransformerList();
