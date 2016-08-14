@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--5.0-->
     <style name="AppTheme" parent="AppTheme.Base">
         <!-- 底部导航栏颜色 -->
         <item name="android:navigationBarColor">#4876FF</item>

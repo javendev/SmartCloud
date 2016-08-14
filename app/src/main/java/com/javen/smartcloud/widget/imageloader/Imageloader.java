@@ -39,6 +39,17 @@ public class Imageloader{
                 .error(R.drawable.default_item_picture)
                 .placeholder(defaultImage)
                 .into(imageView);
+
+    }
+    public  void setImage(String url, ImageView imageView, int defaultImage,int width,int height) {
+        Glide.with(mContext)
+                .load(url)
+                .override(width,height)
+                .centerCrop()
+                .error(R.drawable.default_item_picture)
+                .placeholder(defaultImage)
+                .into(imageView);
+
     }
 
     public void setImageResource(int resId, ImageView imageView, int defaultImage) {

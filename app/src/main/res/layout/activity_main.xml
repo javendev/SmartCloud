@@ -4,8 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".main.MainActivity">
-    <!--Toolbar-->
-    <include layout="@layout/custom_toolbar" />
     <!--DrawerLayout-->
     <include layout="@layout/custom_drawerlayout" />
 </LinearLayout>

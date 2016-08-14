@@ -13,12 +13,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jaeger.library.StatusBarUtil;
 import com.javen.smartcloud.R;
 import com.javen.smartcloud.fragment.FragmentFour;
 import com.javen.smartcloud.fragment.FragmentOne;
@@ -31,11 +32,13 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+public class MainActivity2 extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
     @BindView(R.id.toolbar_title)
     TextView mToolbar_title;
     @BindView(R.id.tl_custom)
     Toolbar mToolbar;
+    @BindView(R.id.lv_left_menu)
+    ListView lvLeftMenu;
     @BindView(R.id.dl_left)
     DrawerLayout mDrawerLayout;
     @BindView(R.id.main_ViewPager)
@@ -52,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     RadioGroup mainTabRadioGroup;
 
     private ActionBarDrawerToggle mDrawerToggle;
+    private String[] lvs = {"List Item 01", "List Item 02", "List Item 03", "List Item 04"};
+    private ArrayAdapter arrayAdapter;
 
 
     //类型为Fragment的动态数组
@@ -86,6 +91,9 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         };
         mDrawerToggle.syncState();
         mDrawerLayout.addDrawerListener(mDrawerToggle);
+        //设置菜单列表
+        arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lvs);
+        lvLeftMenu.setAdapter(arrayAdapter);
 
         mainTabRadioGroup.setOnCheckedChangeListener(this);
     }
@@ -118,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         setSupportActionBar(mToolbar);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setStatusBar();
+
        /* mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -153,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         switch (item.getItemId()) {
 
             case R.id.action_share:
-                Toast.makeText(MainActivity.this, "action_share", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity2.this, "action_share", Toast.LENGTH_LONG).show();
                 break;
             default:
                 break;
@@ -250,11 +258,5 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         if (mainViewPager.getCurrentItem() != current) {
             mainViewPager.setCurrentItem(current);
         }
-    }
-
-
-
-    protected void setStatusBar() {
-        StatusBarUtil.setColorForDrawerLayout(this,mDrawerLayout , R.color.colorPrimary, 40);
     }
 }

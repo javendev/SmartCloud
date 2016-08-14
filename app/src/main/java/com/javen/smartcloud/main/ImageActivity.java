@@ -25,6 +25,7 @@ import com.ToxicBakery.viewpager.transforms.ZoomOutTranformer;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.holder.Holder;
+import com.jaeger.library.StatusBarUtil;
 import com.javen.smartcloud.R;
 import com.javen.smartcloud.entity.GankEntity;
 import com.javen.smartcloud.widget.imageloader.Imageloader;
@@ -53,17 +54,18 @@ public class ImageActivity extends AppCompatActivity implements ViewPager.OnPage
         setContentView(R.layout.activity_image);
         ButterKnife.bind(this);
         mContext= this;
-
+        StatusBarUtil.setTransparent(this);
         Bundle extras = getIntent().getExtras();
         if (extras!=null){
             int type = extras.getInt("type");
             if (type == 0){
                 //查看单张图片
-                convenientBanner.setVisibility(View.GONE);
+
                 showImage.setVisibility(View.VISIBLE);
                 String imageUrl = extras.getString("imageUrl");
                 Imageloader.getInstance(this).setImage(imageUrl,showImage,R.drawable.default_item_picture);
             }else if (type == 1){
+                convenientBanner.setVisibility(View.VISIBLE);
                 int position=extras.getInt("position");
                 if(showImages == null){
                     showImages=new ArrayList<String>();
