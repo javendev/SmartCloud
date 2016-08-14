@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.javen.smartcloud.main.ImageActivity">
+    android:orientation="vertical"
+    >
 
     <com.bigkoo.convenientbanner.ConvenientBanner
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -17,10 +18,10 @@
         app:canLoop="true"
     />
 
-    <ImageView
+    <com.javen.smartcloud.widget.ui.ZoomImageView
         android:id="@+id/id_show_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
+        android:scaleType="matrix"
         android:visibility="gone"/>
 </LinearLayout>

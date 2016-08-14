@@ -52,8 +52,7 @@ public class ImageActivity extends AppCompatActivity implements ViewPager.OnPage
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
         ButterKnife.bind(this);
-
-
+        mContext= this;
 
         Bundle extras = getIntent().getExtras();
         if (extras!=null){
@@ -134,6 +133,8 @@ public class ImageActivity extends AppCompatActivity implements ViewPager.OnPage
         public View createView(Context context) {
             imageView = new ImageView(context);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+//            imageView = new ZoomImageView(getApplicationContext());
+//            imageView.setScaleType(ImageView.ScaleType.MATRIX);
             return imageView;
         }
 
